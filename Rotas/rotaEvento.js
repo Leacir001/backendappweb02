@@ -11,4 +11,4 @@ rotaEvento.get("/", ctrlEvento.consultar)
     .patch("/", ctrlEvento.alterar)
     .delete("/", ctrlEvento.excluir);
 
-export default rotaEvento;
+export default rotaEvento

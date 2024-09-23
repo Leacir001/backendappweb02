@@ -3,12 +3,12 @@ import EventoDAO from "../DAO/EventoDAO.js";
 //DAO = Data Access Object -> Objeto de acesso aos dados
 export default class Evento {
     //atributos privados
-    #idEvento
-    #nomeEvento
-    #data
-    #local
-    #cidade
-    #estado
+    #idEvento;
+    #nomeEvento;
+    #data;
+    #local;
+    #cidade;
+    #estado;
 
     constructor(idEvento, nomeEvento, data, local, cidade, estado) {
         this.#idEvento = idEvento;
@@ -18,8 +18,6 @@ export default class Evento {
         this.#cidade = cidade;
         this.#estado = estado;
     }
-
-    // métodos javascript getters e setters
 
     get idEvento() {
         return this.#idEvento;
@@ -69,16 +67,25 @@ export default class Evento {
         this.#estado = novoEstado;
     }
 
-    //sobrescrita do método toString()
     toString() {
-        //string literals
         return `ID Evento: ${this.#idEvento}
 Nome Evento: ${this.#nomeEvento}
 Data: ${this.#data}
 Local: ${this.#local}
 Cidade: ${this.#cidade}
-Estado: ${this.#estado}
-        `;
+Estado: ${this.#estado}`;
+    }
+
+    // Método toJSON para retorno de um objeto JSON
+    toJSON() {
+        return {
+            idEvento: this.#idEvento,
+            nomeEvento: this.#nomeEvento,
+            data: this.#data,
+            local: this.#local,
+            cidade: this.#cidade,
+            estado: this.#estado
+        }
     }
 
     async gravar() {
@@ -99,16 +106,5 @@ Estado: ${this.#estado}
     async consultar(termoBusca) {
         const eventoDAO = new EventoDAO();
         return await eventoDAO.consultar(termoBusca);
-    }
-    //sobrescrita do método toString()
-    toJSON() {
-        //string literals
-        return `ID Evento: ${this.#idEvento}
-Nome Evento: ${this.#nomeEvento}
-Data: ${this.#data}
-Local: ${this.#local}
-Cidade: ${this.#cidade}
-Estado: ${this.#estado}
-        `;
     }
 }
