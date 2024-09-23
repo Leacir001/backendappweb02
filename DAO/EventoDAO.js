@@ -84,6 +84,7 @@ export default class EventoDAO {
             sql = `SELECT * FROM evento ORDER BY nomeEvento;`;
         }
 
+        
         const conexao = await conectar();
         const [registros] = await conexao.execute(sql, parametros);
         let listaEventos = [];
