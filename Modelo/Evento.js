@@ -1,7 +1,8 @@
 import EventoDAO from "../DAO/EventoDAO.js";
 
+//DAO = Data Access Object -> Objeto de acesso aos dados
 export default class Evento {
-
+    //atributos privados
     #idEvento;
     #nomeEvento;
     #data;
