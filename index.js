@@ -1,10 +1,15 @@
 //import Evento from "./Modelo/Evento.js"; //nunca se esqueça da extensão .js
 import express from "express";
 import rotaEvento from "./Rotas/rotaEvento.js";  // Substituí rotaCliente por rotaEvento
+import cors from "cors";
 
 const app = express();
 const host = "0.0.0.0";
 const porta = 4000;
+
+app.use(cors({
+origin: '*',
+}));
 
 app.use(express.json());
 

@@ -1,4 +1,4 @@
-//import { application } from "express";
+import { application } from "express";
 
 import Evento from "../Modelo/Evento.js";
 
@@ -75,7 +75,8 @@ export default class EventoCtrl {
 
     excluir(requisicao, resposta) {
         if (requisicao.method === "DELETE" && requisicao.is("application/json")) {
-            const { idEvento } = requisicao.body;
+            const dados  = requisicao.body;
+            const idEvento = dados.idEvento;
 
             if (idEvento) {
                 const evento = new Evento(idEvento);
